@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+  <title>localStorage task</title>
+  
+<!--  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/redmond/jquery-ui.css">
+--> 
+ 
+  <link rel="stylesheet" href="jquery-ui.css">
+  
+  
+</head>
+<body>
+
+<div>To Do List</div>
+<div><br></div>
+
+  <div id="tasktitle"></div>
+<div>現在のToDoを編集します</div>
+	<div id="output3"></div>
+	<div id="tasktitle"></div>	
+    
+     <div><br><br></div>
+
+ <div>タイトル</div>
+  <input id="formTexttitle" type="text" size="50"  maxlength="20">
+  
+    <div><br></div>
+     <div id="taskform">
+  <div>詳細</div>
+   <!-- <input id="formTexttask" type="text" size="160"  maxlength="160"style="height:50px;">-->
+    <textarea name="example1"id="formTexttask" cols="51" rows="5" wrap="hard"></textarea>
+ </div>
+ <div><br></div>
+  <div>期限</div>
+ <div id="dateform">
+ <input id="formTextdate" type="text" size="50"  maxlength="20">
+	</div>
+  <div><br></div>
+  <a href="todo1.html">
+    <input id="formButton" type="button" value="完了" style="WIDTH: 380px; HEIGHT: 20px">
+	</a>
+	<div><br></div>
+	<!--<div>ToDoリストを作る</div>
+	<div id="output2"></div>-->
+	
+
+ 
+ 
+ 
+ <!-- <a href="todo1.html">
+<input id="sampleButton" type="button" value="samle">
+</a>-->
+
+  <div id="list"></div>
+  
+  
+  
+  
+  <script src="jquery.min.js"></script>
+  
+
+<script src="jquery-ui.min.js"></script>
+<script>
+        (function(){
+            $("#formTextdate").datepicker({
+        dateFormat: 'yy/mm/dd (DD)'
+        
+    });
+        })();
+        </script>
+
+  
+  
+  
+
+  <script src="jquery-2.0.0.min.js"></script>
+  <script src="task.js"></script>
+    <link rel="stylesheet" href="todolist.css">
+</body>
+</html>

@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+padding:20px;
+
+}
+
+
+
+.todotitle{
+	font-size:24px;
+	
+	
+}
+
+.onetodo{
+
+background-color:#ddffdd;
+
+
+}
+
+.listtext{
+padding:20px;
+
+}
