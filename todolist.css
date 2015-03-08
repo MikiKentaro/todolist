@@ -5,9 +5,11 @@ body{
 padding:20px;
 
 }
-
-
-
+.title{
+	font-size:36px;
+	font-family:"Gulim";
+padding-left:100px;
+}
 .todotitle{
 	font-size:24px;
 	
@@ -25,3 +27,9 @@ background-color:#ddffdd;
 padding:20px;
 
 }
+
+#editButton{
+padding-left:20px;
+
+}
+

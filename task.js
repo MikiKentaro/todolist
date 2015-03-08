@@ -5,42 +5,19 @@
 
 function loaded() {
   showText();
-  firstText();
-readnum();
+  readnum();
   // ボタンをクリックしたときに実行するイベントを設定する
   $("#formButton").click(
     // コールバックとしてメソッドを引数にわたす
     function() {
-      saveText();
+      taskText();
 	  dateText();
 	  titleText();
       showText();
     });
 	
 }
-//$("#sampleButton").click(
-//    // コールバックとしてメソッドを引数にわたす
-//    function() {
-//     sample();
-//	 
-//    });
-	
-	
-	
 
-
-
-
-
-
-/*
-$("#formTexttask").click(
-    // コールバックとしてメソッドを引数にわたす
-    function() {
-     formresetText();
-	 
-    });
-*/
 $("#resetButton").click(
     // コールバックとしてメソッドを引数にわたす
     function() {
@@ -48,29 +25,7 @@ $("#resetButton").click(
   showText();
       
     });
-     
- function firstText() {
- var text = $("#formTexttask");
-  
- var val = escapeText(text.val()); 
-  // テキストボックスを空にする
-  text.val("ここに書いてください");
-
  
-
-} 
-
-function formresetText() {
- var text = $("#formTexttask");
-  
- var val = escapeText(text.val()); 
-  // テキストボックスを空にする
-  text.val("");
- 
-
-}   
-
-
 function resetText() {
 
  localStorage.clear();
@@ -79,11 +34,10 @@ alert("リセット");
 }
 
 
-
-
-
 // 入力された内容をローカルストレージに保存する
-function saveText() {
+
+//詳細部分のテキストを保存する
+function taskText() {
   // 時刻をキーにして入力されたテキストを保存する
 var list = $("#list")
   list.children().remove();
@@ -91,18 +45,13 @@ var list = $("#list")
  var key, value, html = [];
 
  var tasktext = $("#formTexttask");
- //var datetext = $("#formTextdate");
+ 
   var time = new Date();
   var mydate=time.getDate();
   var mymonth=time.getMonth()+1;
     var myyear=time.getFullYear();
   var val = escapeText(tasktext.val());
-  //var vala = escapeText(datetext.vala());
- 
-  // テキストボックスを空にする
- 
- 
-  value = sessionStorage.getItem("aaa");
+  value = sessionStorage.getItem("tasknum");
 	
 
 value =parseInt(value,10);
@@ -111,37 +60,22 @@ value =parseInt(value,10);
 
  key = localStorage.key(value);
   
-   var str=localStorage.getItem("test"+value);
+   var str=localStorage.getItem(key);
   var todo=JSON.parse(str);
   
   
   if(checkText(val)) {
-  
-  
   todo[0].checklist[0].task=val;
-   // todo[0].checklist[0].kigen=vala;
   }
+  
   var str=JSON.stringify(todo);
-  localStorage.setItem("test"+value,str);
-
-  
-  
-  for(var i in todo){
-$("#list").append("<div>"+"項目"+todo[i].dotime+"</div>");
-for(var j in todo[i].checklist){
-$("#list").append("<div>"+"ミッション"+todo[i].checklist[j].task+"作成日"+todo[i].checklist[j].sakusei+todo[i].checklist[j].finish+"期限"+todo[i].checklist[j].kigen+"</div>");
-
-}
-
-}
+  localStorage.setItem(todo[0].checklist[0].saveid,str);
 
   // テキストボックスを空にする
   tasktext.val("");
 
 }
-
-
-
+//日付のテキストを保存する
 function dateText() {
   // 時刻をキーにして入力されたテキストを保存する
 var list = $("#list")
@@ -161,7 +95,7 @@ var list = $("#list")
   // テキストボックスを空にする
  
  
-  value = sessionStorage.getItem("aaa");
+  value = sessionStorage.getItem("tasknum");
 	
 
 value =parseInt(value,10);
@@ -170,7 +104,7 @@ value =parseInt(value,10);
 
  key = localStorage.key(value);
   
-   var str=localStorage.getItem("test"+value);
+   var str=localStorage.getItem(key);
   var todo=JSON.parse(str);
   
   if(checkText(val)) {
@@ -179,19 +113,7 @@ value =parseInt(value,10);
   }
   
   var str=JSON.stringify(todo);
-  localStorage.setItem("test"+value,str);
-
-  
-  
-  for(var i in todo){
-$("#list").append("<div>"+"項目"+todo[i].dotime+"</div>");
-for(var j in todo[i].checklist){
-$("#list").append("<div>"+"ミッション"+todo[i].checklist[j].task+"作成日"+todo[i].checklist[j].sakusei+todo[i].checklist[j].finish+"期限"+todo[i].checklist[j].kigen+"</div>");
-
-}
-
-}
-
+  localStorage.setItem(todo[0].checklist[0].saveid,str);
 
   
   
@@ -199,7 +121,7 @@ $("#list").append("<div>"+"ミッション"+todo[i].checklist[j].task+"作成日
   datetext.val("");
 
 }
-
+//タイトルのテキストを保存する
 function titleText() {
   // 時刻をキーにして入力されたテキストを保存する
 var list = $("#list")
@@ -219,7 +141,7 @@ var list = $("#list")
   // テキストボックスを空にする
  
  
-  value = sessionStorage.getItem("aaa");
+  value = sessionStorage.getItem("tasknum");
 	
 
 value =parseInt(value,10);
@@ -228,7 +150,7 @@ value =parseInt(value,10);
 
  key = localStorage.key(value);
   
-   var str=localStorage.getItem("test"+value);
+   var str=localStorage.getItem(key);
   var todo=JSON.parse(str);
   
   
@@ -238,49 +160,31 @@ value =parseInt(value,10);
  
   }
   var str=JSON.stringify(todo);
-  localStorage.setItem("test"+value,str);
+  localStorage.setItem(todo[0].checklist[0].saveid,str);
 
-  
-  
-  for(var i in todo){
-$("#list").append("<div>"+"項目"+todo[i].dotime+"</div>");
-for(var j in todo[i].checklist){
-$("#list").append("<div>"+"ミッション"+todo[i].checklist[j].task+"作成日"+todo[i].checklist[j].sakusei+todo[i].checklist[j].finish+"期限"+todo[i].checklist[j].kigen+"</div>");
-
-}
-
-} 
-
+ 
   // テキストボックスを空にする
   titletext.val("");
-
-
-
-
 
 }
 
 function showText() {
-	
-	
+		
 	var list = $("#list")
   list.children().remove();
   // すでにある要素を削除する
   
-  
   var key, value, html = [];
 
- 
-    value = sessionStorage.getItem("aaa");
+ //セッションストレージからタスク番号をと見込む
+    value = sessionStorage.getItem("tasknum");
 	
 
 value =parseInt(value,10);
 
-
-
  key = localStorage.key(value);
   
-   var str=localStorage.getItem("test"+value);
+   var str=localStorage.getItem(key);
   var todo=JSON.parse(str);
   
   var len=localStorage.length
@@ -294,8 +198,6 @@ $("#list").append("<div>作成日："+todo[i].checklist[j].sakusei+"<br>詳細�
 
 }
 
-
-
 }
 
 
@@ -308,12 +210,16 @@ function escapeText(text) {
   return $("<div>").text(text).html();
   
 }
-
-
-
 
 // 入力チェックを行う
 function checkText(text) {
+
+
+if(text.indexOf("&lt;")!=　-1||text.indexOf("&gt;")!=　-1){
+   alert("<>の記号の使用は避けてください");
+    return false;
+  }
+
   // 文字数が0または20以上は不可
   if (0 === text.length || 160 < text.length) {
     //alert("文字数は1～20字にしてください");
@@ -336,29 +242,20 @@ function checkText(text) {
   return true;
 }
 
-function sample() {
-
-
-alert(sam);
-
-
-
-}
+//読み込み時にテキストフォームに編集前のテキストを表示する
 function readnum(){
 
 var key, value, html = [];
 
 
-    value = sessionStorage.getItem("aaa");
+    value = sessionStorage.getItem("tasknum");
 	
 
 value =parseInt(value,10);
 
 
-
  key = localStorage.key(value);
-   //value = localStorage.getItem(key);
-   var str=localStorage.getItem("test"+value);
+   var str=localStorage.getItem(key);
   var todo=JSON.parse(str);
   
   var len=localStorage.length
