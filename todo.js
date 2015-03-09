@@ -40,12 +40,12 @@ function saveText() {
   var mymonth=time.getMonth()+1;
     var myyear=time.getFullYear();
   var val = escapeText(text.val());
- var localst=999-localStorage.length;
+ var savetime=9999-time;
   var todo=
 [{
 "dotime":val,
 "checklist":[
-{"task":"","sakusei":myyear+"/"+mymonth+"/"+mydate,"finish":"未完了","kigen":"","saveid":localst},
+{"task":"","sakusei":myyear+"/"+mymonth+"/"+mydate,"finish":"未完了","kigen":"","saveid":savetime},
 ]
 },
 ];
@@ -53,7 +53,7 @@ function saveText() {
 if(checkText(val)) {
 
 var str=JSON.stringify(todo);
-  localStorage.setItem(localst,str);
+  localStorage.setItem(savetime,str);
   //alert("tesb"+localst);
   
   // テキストボックスを空にする
