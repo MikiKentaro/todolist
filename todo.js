@@ -40,7 +40,10 @@ function saveText() {
   var mymonth=time.getMonth()+1;
     var myyear=time.getFullYear();
   var val = escapeText(text.val());
- var savetime=9999-time;
+ var date_obj = new Date(2015,3,10,23,24,59,999);
+  var savetime=9999999999999-time;
+
+ //alert(savetime);
   var todo=
 [{
 "dotime":val,
